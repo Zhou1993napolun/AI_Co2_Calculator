@@ -1,0 +1,18 @@
+Operating System Name,Linux,
+Operating System Version,5.15.0-88-generic,
+Computer Network Name,3080,
+Processor Information,x86_64,
+Architecture Information,x86_64,
+Platform Information,Linux-5.15.0-88-generic-x86_64-with-glibc2.29,
+Complete System Information,"uname_result(system='Linux', node='3080', release='5.15.0-88-generic', version='#98~20.04.1-Ubuntu SMP Mon Oct 9 16:43:45 UTC 2023', machine='x86_64', processor='x86_64')",
+CPU Model,12th Gen Intel(R) Core(TM) i9-12900H,
+GPU Model,02.0 VGA compatible controller,
+Instance,Resource Type,Average Usage (%)
+node,CPU,15.24536605
+node,RAM,0.000493329
+gpu,GPU,32
+Estimated power consumption by CPU+GPU Wh,3.440305374,
+After conversion kWh,0.003440305,
+After conversion J,12385.09935,
+duration,126,
+datetime,11/6/2023 10:47,
