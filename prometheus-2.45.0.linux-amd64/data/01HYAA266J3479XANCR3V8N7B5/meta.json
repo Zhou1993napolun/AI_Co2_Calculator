@@ -1,0 +1,17 @@
+{
+	"ulid": "01HYAA266J3479XANCR3V8N7B5",
+	"minTime": 1716163200000,
+	"maxTime": 1716170400000,
+	"stats": {
+		"numSamples": 233280,
+		"numSeries": 486,
+		"numChunks": 1944
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01HYAA266J3479XANCR3V8N7B5"
+		]
+	},
+	"version": 1
+}

@@ -1,0 +1,30 @@
+{
+	"ulid": "01HY2WFR2PZ75FMA5D4R6BG2RS",
+	"minTime": 1715758819769,
+	"maxTime": 1715767200000,
+	"stats": {
+		"numSamples": 198541,
+		"numSeries": 653,
+		"numChunks": 1964
+	},
+	"compaction": {
+		"level": 2,
+		"sources": [
+			"01HY2HP4CJMMN26PP042220PR0",
+			"01HY2HP4FPP46WJW4HG0D8PKMK"
+		],
+		"parents": [
+			{
+				"ulid": "01HY2HP4CJMMN26PP042220PR0",
+				"minTime": 1715758819769,
+				"maxTime": 1715760000000
+			},
+			{
+				"ulid": "01HY2HP4FPP46WJW4HG0D8PKMK",
+				"minTime": 1715760139767,
+				"maxTime": 1715767200000
+			}
+		]
+	},
+	"version": 1
+}
