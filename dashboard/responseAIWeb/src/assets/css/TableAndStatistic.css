@@ -1,0 +1,43 @@
+.tablecss{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 3.5%;
+    margin-bottom: 40px;
+}
+
+.tablewenzi{
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: -1px;
+    font-family: "Helvetica Neue Orange";
+}
+
+.statisticcss{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.piewenzicss{
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: -0.1px;
+    font-family: "Helvetica Neue Orange";
+    margin-left: 0px;
+}
+
+.graphcss {
+    display: flex;
+    flex-direction: row;
+}
+
+.piecss {
+    margin-left: 0px;
+}
+
+.piecss2 {
+    margin-left: 55px;
+}

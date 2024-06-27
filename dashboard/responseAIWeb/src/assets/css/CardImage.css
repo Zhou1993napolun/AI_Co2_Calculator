@@ -1,0 +1,54 @@
+.imagesgeng{
+    display: flex;
+    flex-direction: row;
+}
+
+.imageswenzi{
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: -0.1px;
+    font-family: "Helvetica Neue Orange";
+}
+
+.biaoqiancss{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    left: 0;
+}
+
+.biaoqian{
+    display: flex;
+    flex-direction: column;
+    margin-right: 40px;
+    margin-top: 30px;
+}
+
+.biaoqianziti{
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: -0.1px;
+    font-family: "Helvetica Neue Orange";
+}
+
+.shuziziti{
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: -0.1px;
+    font-family: "Helvetica Neue Orange";
+    color: #ff7900;
+    margin-top: 10px;
+}
+
+.timeziti{
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: -0.1px;
+    font-family: "Helvetica Neue Orange";
+    color: #ff7900;
+    margin-top: 10px;
+}

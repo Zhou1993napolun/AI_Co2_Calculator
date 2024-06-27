@@ -1,0 +1,99 @@
+.geng {
+    padding: 10px;
+    position: relative;
+    margin-top: 10px;
+}
+
+.firstline {
+    display: flex;
+    flex-direction: row;
+}
+
+.firstlinewenzi{
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: -0.1px;
+    font-family: "Helvetica Neue Orange";
+    position: relative;
+    left: 7%;
+}
+
+.firstlinebutton{
+    font-family: "Helvetica Neue Orange";
+    position: relative;
+    left: 35%;
+}
+
+.secondline {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    flex: 1;
+}
+
+.leftbox {
+    display: flex;
+    flex-direction: column;
+    width: 950px;
+}
+
+.imagediv {
+    position: relative;
+    left: 14%;
+}
+
+.tablediv {
+    margin-top: 42px;
+    margin-left: 94px;
+}
+
+.rightbox {
+    display: flex;
+    flex-direction: column;
+}
+
+.selectpailian {
+    display: flex;
+    flex-direction: row;
+}
+
+.selectarea {
+    display: flex;
+    flex-direction: row;
+}
+
+.regionselectwenzi {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: -1px;
+    font-family: "Helvetica Neue Orange";
+}
+
+.regionselect {
+    margin-left: 10px;
+}
+
+.lifecyclewenzi {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: -0.1px;
+    font-family: "Helvetica Neue Orange";
+    margin-left: 50px;
+}
+
+.lifecycleselect {
+    margin-left: 10px;
+}
+
+
+
+.labelarealine {
+    margin-left: 0px;
+}
+
+.statisticarea {
+    margin-top: 40px;
+}

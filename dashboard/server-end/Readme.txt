@@ -1,0 +1,1 @@
+You could put the jar to any folder, but remember, the CVS file must be together with this jar, for example, the jar is in the "E:\test"(window) or "/home/test"(linux), the CVS must be also in the folder too, otherwise, it will not find the CVS file
