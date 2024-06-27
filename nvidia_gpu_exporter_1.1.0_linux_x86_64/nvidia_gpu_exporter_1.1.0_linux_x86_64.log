@@ -1,0 +1,2 @@
+ts=2024-06-03T08:10:39.338Z caller=main.go:84 level=info msg="Listening on address" address=:9835
+ts=2024-06-03T08:10:39.338Z caller=main.go:99 level=error msg="Error starting HTTP server" err="listen tcp :9835: bind: address already in use"
