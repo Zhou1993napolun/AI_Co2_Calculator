@@ -146,9 +146,10 @@ Prometheus stores all scraped metrics as time-series data, indexed by metric nam
 #Install Python 3.8 or Higher
 
 #Install FastAPI and Unicorn
+ ```sh
 python -m pip install fastapi 
 python -m pip install unicorn
-
+```
 #Start the Service
 Open the command line terminal and navigate to the directory containing your main.py file. Start the service with the following command:
 python -m uvicorn main:app --reload
