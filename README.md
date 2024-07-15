@@ -1,14 +1,13 @@
 # README
 
 
-
-
 ### **Introduction**
 
 In the current global context, where environmental protection is becoming increasingly critical, we present AI_Co2_Calculator—an innovative tool designed to measure the carbon emissions generated during deep learning training processes. Monitoring and reducing carbon emissions has become a shared responsibility for individuals and organizations alike, and AI_Co2_Calculator aims to facilitate this effort.
 AI_Co2_Calculator offers a user-friendly interface that enables users to swiftly and efficiently start monitoring their carbon footprint. The tool provides intuitive and clear data visualizations, which facilitate a comprehensive understanding of carbon emissions. Its robust compatibility allows it to automatically detect the majority of CPU and GPU models available on the market, ensuring wide applicability and convenience.
 One of the key features of AI_Co2_Calculator is its ability to accurately calculate carbon emissions based on the varying carbon intensity of electricity in different countries. This precision is crucial for users aiming to optimize the energy efficiency of their deep learning training processes. By considering the specific carbon intensity of the user's location, AI_Co2_Calculator delivers tailored and precise emission calculations.
 As the world increasingly emphasizes the importance of sustainability, tools like AI_Co2_Calculator play a vital role in advancing environmental responsibility within the tech industry. By helping users optimize their energy use and reduce their carbon footprint, AI_Co2_Calculator contributes to the broader goal of building a greener and more sustainable future. Embracing AI_Co2_Calculator means taking a proactive step towards environmental stewardship, aligning technological advancements with the imperative of reducing carbon emissions for the benefit of our planet.
+
 
 
 * **What is Powertest for ?**
@@ -97,6 +96,7 @@ Prometheus stores all scraped metrics as time-series data, indexed by metric nam
   (If this method is not feasible, you can directly use the installation package provided in the "source" folder)
 
   After the download is complete, use the command to extract the file: ``tar -xvf nvidia_gpu_exporter_1.1.0_linux_64.tar.gz``
+  
 
 * **Install Node Exporter**
 
@@ -108,16 +108,16 @@ Prometheus stores all scraped metrics as time-series data, indexed by metric nam
 
   After the download is complete, use the command to extract the file: ``tar -xvf node_exporter_1.5.0.linux_amd64.tar.gz``
 
-  
-
   By default, the nvidia_node_exporter and node_exporter should work out of the box for most setups. However, if there are any specific configurations or flags you'd like to set, refer to the official documentation.
 
 * Place the above three extracted files into the `power_test_v1.0` folder.
 * Copy all the files in the ``power_test_v1.0`` folder into the folder of your target program
+* 
 
 ### **Running the Program**
 
-* **Start Nvidia GPU Exporter, Node Exporter, and Prometheus**
+
+* **Start Nvidia GPU Exporter, Node Exporter, Prometheus, AI carbon footprint tools Python server, responseAIProject**
 
   Enter the root directory of  your target program
 
@@ -127,7 +127,7 @@ Prometheus stores all scraped metrics as time-series data, indexed by metric nam
   # If you see the message "All services started in the background." after running, it means the services started successfully.
   ```
 
-  If the script cannot be executed, you can manually start Nvidia GPU Exporter, Node Exporter, and Prometheus by navigating to the corresponding directories and using the ``nohup`` command:
+ If the script cannot be executed, you can manually start Nvidia GPU Exporter, Node Exporter, Prometheus, AI carbon footprint tools Python server, and responseAIProject by navigating to the corresponding directories and using the nohup command by following these steps:
 
   ```sh
   # Start Prometheus
@@ -139,10 +139,11 @@ Prometheus stores all scraped metrics as time-series data, indexed by metric nam
   # Start Node exporter
   nohup ./node_exporter > node_exporter.log 2>&1 &
   ```
+  
 
+* **AI carbon footprint tools Python server start process**
 
-* **AI carbon footprint tools Python server start process** 
-#Install Python 3.8 or Higher 
+#Install Python 3.8 or Higher
 
 #Install FastAPI and Unicorn
 python -m pip install fastapi 
@@ -153,22 +154,18 @@ Open the command line terminal and navigate to the directory containing your mai
 python -m uvicorn main:app --reload
 
 
+
 * **ResponseAIProject** *
-
-
+  
 First, make sure you have install the JDK8 above, and the nodejs (version above 18), npm(version above 8) command in your machine.
 
 1  git clone this folder to your machine
 2  After finish, copy the CVS file to responseAIProject-/serve-end/, and change the names to "training_data.csv" or "inference_data.csv"
-3 start the jar with: 
-
-   nohup  java -jar responseAIWeb-0.0.1-SNAPSHOT.jar >log.out &
-   
-4 Go to the responseAIProject-\responseAIWeb, exec the commands:
+3  start the jar with: nohup  java -jar responseAIWeb-0.0.1-SNAPSHOT.jar >log.out &
+4  Go to the responseAIProject-\responseAIWeb, exec the commands:
   1)  npm i serve -g
   2)  npm i
-  3)  run command "npm run build",
-
+  3)  run command "npm run build"
      
  Afetr success build, there is "build" folder under responseAIWeb, go into "build" folder,
   5) nohup serve -s  -l 3033 & (Remember, this command must be you are in "build" folder)
