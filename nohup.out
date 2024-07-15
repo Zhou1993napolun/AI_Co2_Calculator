@@ -1,0 +1,48 @@
+ INFO  Accepting connections at http://localhost:42201
+ INFO  Accepting connections at http://localhost:3033
+INFO:     Will watch for changes in these directories: ['/home/zhourui/hyf_lpl/AI_Co2_Calculator-main/AI_Co2_Calculator-main']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/home/zhourui/hyf_lpl/AI_Co2_Calculator-main/AI_Co2_Calculator-main']
+ERROR:    [Errno 98] Address already in use
+ INFO  Accepting connections at http://localhost:36285
+INFO:     Will watch for changes in these directories: ['/home/zhourui/hyf_lpl/AI_Co2_Calculator-main/AI_Co2_Calculator-main']
+ERROR:    [Errno 98] Address already in use
+ INFO  Accepting connections at http://localhost:34043
+ HTTP  7/10/2024 5:05:12 PM 192.168.27.120 GET /indexPage
+ HTTP  7/10/2024 5:05:12 PM 192.168.27.120 Returned 404 in 30 ms
+ HTTP  7/10/2024 5:05:12 PM 192.168.27.120 GET /favicon.ico
+ HTTP  7/10/2024 5:05:12 PM 192.168.27.120 Returned 404 in 3 ms
+ HTTP  7/10/2024 5:05:14 PM 192.168.27.120 GET /indexPage
+ HTTP  7/10/2024 5:05:14 PM 192.168.27.120 Returned 404 in 3 ms
+ HTTP  7/10/2024 5:06:06 PM 192.168.27.120 GET /indexPage
+ HTTP  7/10/2024 5:06:06 PM 192.168.27.120 Returned 404 in 3 ms
+ HTTP  7/10/2024 5:06:07 PM 192.168.27.120 GET /indexPage
+ HTTP  7/10/2024 5:06:07 PM 192.168.27.120 Returned 404 in 3 ms
+ HTTP  7/10/2024 5:06:08 PM 192.168.27.120 GET /indexPage
+ HTTP  7/10/2024 5:06:08 PM 192.168.27.120 Returned 404 in 2 ms
+ HTTP  7/10/2024 5:06:08 PM 192.168.27.120 GET /indexPage
+ HTTP  7/10/2024 5:06:08 PM 192.168.27.120 Returned 404 in 2 ms
+ HTTP  7/10/2024 5:06:08 PM 192.168.27.120 GET /indexPage
+ HTTP  7/10/2024 5:06:08 PM 192.168.27.120 Returned 404 in 1 ms
+ HTTP  7/10/2024 5:06:08 PM 192.168.27.120 GET /indexPage
+ HTTP  7/10/2024 5:06:08 PM 192.168.27.120 Returned 404 in 1 ms
+ HTTP  7/10/2024 5:06:08 PM 192.168.27.120 GET /indexPage
+ HTTP  7/10/2024 5:06:08 PM 192.168.27.120 Returned 404 in 3 ms
+ HTTP  7/10/2024 5:06:09 PM 192.168.27.120 GET /indexPage
+ HTTP  7/10/2024 5:06:09 PM 192.168.27.120 Returned 404 in 3 ms
+ HTTP  7/10/2024 5:06:09 PM 192.168.27.120 GET /indexPage
+ HTTP  7/10/2024 5:06:09 PM 192.168.27.120 Returned 404 in 2 ms
+ HTTP  7/10/2024 5:06:09 PM 192.168.27.120 GET /indexPage
+ HTTP  7/10/2024 5:06:09 PM 192.168.27.120 Returned 404 in 2 ms
+ HTTP  7/10/2024 5:06:09 PM 192.168.27.120 GET /indexPage
+ HTTP  7/10/2024 5:06:09 PM 192.168.27.120 Returned 404 in 2 ms
+ HTTP  7/10/2024 5:06:09 PM 192.168.27.120 GET /indexPage
+ HTTP  7/10/2024 5:06:09 PM 192.168.27.120 Returned 404 in 1 ms
+ INFO  Accepting connections at http://localhost:39065
+INFO:     Will watch for changes in these directories: ['/home/zhourui/hyf_lpl/AI_Co2_Calculator-main/AI_Co2_Calculator-main']
+ERROR:    [Errno 98] Address already in use
+INFO:     Will watch for changes in these directories: ['/home/zhourui/hyf_lpl/AI_Co2_Calculator-main/AI_Co2_Calculator-main']
+ERROR:    [Errno 98] Address already in use
+ INFO  Accepting connections at http://localhost:33493
+INFO:     Will watch for changes in these directories: ['/home/zhourui/hyf_lpl/AI_Co2_Calculator-main/AI_Co2_Calculator-main']
+ERROR:    [Errno 98] Address already in use
