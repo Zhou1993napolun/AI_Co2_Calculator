@@ -142,22 +142,23 @@ Prometheus stores all scraped metrics as time-series data, indexed by metric nam
   
 
 * **AI carbon footprint tools Python server start process**
-
+```
 #Install Python 3.8 or Higher
 
 #Install FastAPI and Unicorn
- ```sh
+
 python -m pip install fastapi 
 python -m pip install unicorn
-```
+
 #Start the Service
 Open the command line terminal and navigate to the directory containing your main.py file. Start the service with the following command:
 python -m uvicorn main:app --reload
-
+```
 
 
 * **ResponseAIProject** *
-  
+
+```
 First, make sure you have install the JDK8 above, and the nodejs (version above 18), npm(version above 8) command in your machine.
 
 1  git clone this folder to your machine
@@ -171,7 +172,7 @@ First, make sure you have install the JDK8 above, and the nodejs (version above 
  Afetr success build, there is "build" folder under responseAIWeb, go into "build" folder,
   5) nohup serve -s  -l 3033 & (Remember, this command must be you are in "build" folder)
   6) Then, access the page on any machine  , https://IP:3033
-
+```
 
 
 * **Modify the main code of the power_test target program**
