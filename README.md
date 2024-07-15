@@ -2,20 +2,35 @@
 
 
 
+
 ### **Introduction**
+
+In the current global context, where environmental protection is becoming increasingly critical, we present AI_Co2_Calculator—an innovative tool designed to measure the carbon emissions generated during deep learning training processes. Monitoring and reducing carbon emissions has become a shared responsibility for individuals and organizations alike, and AI_Co2_Calculator aims to facilitate this effort.
+AI_Co2_Calculator offers a user-friendly interface that enables users to swiftly and efficiently start monitoring their carbon footprint. The tool provides intuitive and clear data visualizations, which facilitate a comprehensive understanding of carbon emissions. Its robust compatibility allows it to automatically detect the majority of CPU and GPU models available on the market, ensuring wide applicability and convenience.
+One of the key features of AI_Co2_Calculator is its ability to accurately calculate carbon emissions based on the varying carbon intensity of electricity in different countries. This precision is crucial for users aiming to optimize the energy efficiency of their deep learning training processes. By considering the specific carbon intensity of the user's location, AI_Co2_Calculator delivers tailored and precise emission calculations.
+As the world increasingly emphasizes the importance of sustainability, tools like AI_Co2_Calculator play a vital role in advancing environmental responsibility within the tech industry. By helping users optimize their energy use and reduce their carbon footprint, AI_Co2_Calculator contributes to the broader goal of building a greener and more sustainable future. Embracing AI_Co2_Calculator means taking a proactive step towards environmental stewardship, aligning technological advancements with the imperative of reducing carbon emissions for the benefit of our planet.
+
 
 * **What is Powertest for ?**
 
-  We need to detect the utilization rate of CPU, GPU and RAM, and then calculate the energy consumption of the device according to the relevant formula, which can be used for the detection of the model. However, because different tools detect different information, such as Prometheus can read the CPU and RAM information, but not directly read the GPU. 
+AI_Co2_Calculator is designed to detect the utilization rates of CPU, GPU, and RAM, and then calculate the energy consumption of the device based on relevant formulas. This functionality is essential for accurately assessing the energy usage and carbon emissions of deep learning models. Different tools are required to detect different information—while Prometheus can read CPU and RAM utilization, it cannot directly read GPU utilization.
+To bridge this gap, AI_Co2_Calculator integrates specialized GPU monitoring tools such as NVIDIA exporter and Node exporter. This allows users to obtain comprehensive utilization data across all major hardware components. By combining these metrics, AI_Co2_Calculator can provide a holistic view of energy consumption, helping users to optimize their models and reduce their environmental impact.
+
 
 * **What is Prometheus**
 
   [Prometheus](https://prometheus.io/) is an open-source monitoring and alerting toolkit that focuses on reliability and scalability. Originally built by SoundCloud in 2012, Prometheus has since become a project under the Cloud Native Computing Foundation (CNCF). Key features include:
 
-  - Multi-dimensional Data Model: Uses key-value pairs for data representation, enabling flexible and accurate querying.
-  - PromQL: A powerful query language that allows users to aggregate and select time series data in real time.
-  - Distributed and Decentralized: Each instance operates independently, but can also be part of a larger setup.
-  - Pull-based Model: Scrapes metrics from instrumented jobs, either directly or via an intermediary push gateway.
+Key features include:
+Multi-dimensional Data Model:
+Prometheus uses a flexible data model based on key-value pairs called labels, which allows for highly granular and detailed data representation. This enables users to precisely query and aggregate metrics across various dimensions, such as instances, jobs, and environments.
+
+PromQL (Prometheus Query Language):
+Prometheus includes a powerful query language called PromQL, which allows users to perform complex queries on time-series data. With PromQL, users can aggregate, filter, and transform metrics in real-time, facilitating detailed analysis and visualization of system performance.
+
+Time-Series Data Storage:
+Prometheus stores all scraped metrics as time-series data, indexed by metric name and a set of key-value pairs. This approach allows for efficient storage and retrieval of large volumes of metrics data, making it ideal for monitoring large-scale environments.
+
 
 ### **Environment Setup**
 
@@ -125,10 +140,46 @@
   nohup ./node_exporter > node_exporter.log 2>&1 &
   ```
 
+
+* **AI carbon footprint tools Python server start process** 
+#Install Python 3.8 or Higher 
+
+#Install FastAPI and Unicorn
+python -m pip install fastapi 
+python -m pip install unicorn
+
+#Start the Service
+Open the command line terminal and navigate to the directory containing your main.py file. Start the service with the following command:
+python -m uvicorn main:app --reload
+
+
+* **ResponseAIProject** *
+
+
+First, make sure you have install the JDK8 above, and the nodejs (version above 18), npm(version above 8) command in your machine.
+
+1  git clone this folder to your machine
+2  After finish, copy the CVS file to responseAIProject-/serve-end/, and change the names to "training_data.csv" or "inference_data.csv"
+3 start the jar with: 
+
+   nohup  java -jar responseAIWeb-0.0.1-SNAPSHOT.jar >log.out &
+   
+4 Go to the responseAIProject-\responseAIWeb, exec the commands:
+  1)  npm i serve -g
+  2)  npm i
+  3)  run command "npm run build",
+
+     
+ Afetr success build, there is "build" folder under responseAIWeb, go into "build" folder,
+  5) nohup serve -s  -l 3033 & (Remember, this command must be you are in "build" folder)
+  6) Then, access the page on any machine  , https://IP:3033
+
+
+
 * **Modify the main code of the power_test target program**
 
   ```python
-  from powertest import *
+  from AI_Co2_Calculator import *
   import time
   ...
   
@@ -154,7 +205,7 @@ To help you better understand how it works, we provide an example using ``powert
 
 ```python
 import time
-from powertest import *
+from AI_Co2_Calculator import *
 
 def main():
     print("Program Start...")
