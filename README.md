@@ -3,16 +3,16 @@
 
 ### **Introduction**
 
-In the current global context, where environmental protection is becoming increasingly critical, we present AI_Co2_Calculator—an innovative tool designed to measure the carbon emissions generated during deep learning training processes. Monitoring and reducing carbon emissions has become a shared responsibility for individuals and organizations alike, and AI_Co2_Calculator aims to facilitate this effort.
+  In the current global context, where environmental protection is becoming increasingly critical, we present AI_Co2_Calculator—an innovative tool designed to measure the carbon emissions generated during deep learning training processes. Monitoring and reducing carbon emissions has become a shared responsibility for individuals and organizations alike, and AI_Co2_Calculator aims to facilitate this effort.
 AI_Co2_Calculator offers a user-friendly interface that enables users to swiftly and efficiently start monitoring their carbon footprint. The tool provides intuitive and clear data visualizations, which facilitate a comprehensive understanding of carbon emissions. Its robust compatibility allows it to automatically detect the majority of CPU and GPU models available on the market, ensuring wide applicability and convenience.
 One of the key features of AI_Co2_Calculator is its ability to accurately calculate carbon emissions based on the varying carbon intensity of electricity in different countries. This precision is crucial for users aiming to optimize the energy efficiency of their deep learning training processes. By considering the specific carbon intensity of the user's location, AI_Co2_Calculator delivers tailored and precise emission calculations.
 As the world increasingly emphasizes the importance of sustainability, tools like AI_Co2_Calculator play a vital role in advancing environmental responsibility within the tech industry. By helping users optimize their energy use and reduce their carbon footprint, AI_Co2_Calculator contributes to the broader goal of building a greener and more sustainable future. Embracing AI_Co2_Calculator means taking a proactive step towards environmental stewardship, aligning technological advancements with the imperative of reducing carbon emissions for the benefit of our planet.
 
 
 
-* **What is Powertest for ?**
+* **What is AI_Co2_Calculator for ?**
 
-AI_Co2_Calculator is designed to detect the utilization rates of CPU, GPU, and RAM, and then calculate the energy consumption of the device based on relevant formulas. This functionality is essential for accurately assessing the energy usage and carbon emissions of deep learning models. Different tools are required to detect different information—while Prometheus can read CPU and RAM utilization, it cannot directly read GPU utilization.
+  AI_Co2_Calculator is designed to detect the utilization rates of CPU, GPU, and RAM, and then calculate the energy consumption of the device based on relevant formulas. This functionality is essential for accurately assessing the energy usage and carbon emissions of deep learning models. Different tools are required to detect different information—while Prometheus can read CPU and RAM utilization, it cannot directly read GPU utilization.
 To bridge this gap, AI_Co2_Calculator integrates specialized GPU monitoring tools such as NVIDIA exporter and Node exporter. This allows users to obtain comprehensive utilization data across all major hardware components. By combining these metrics, AI_Co2_Calculator can provide a holistic view of energy consumption, helping users to optimize their models and reduce their environmental impact.
 
 
@@ -72,15 +72,15 @@ Prometheus stores all scraped metrics as time-series data, indexed by metric nam
     - job_name: 'prometheus'
       # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
       static_configs:
-        - targets: ['localhost:9090']
+        - targets: ['your_ip:9090']
   
     - job_name: 'node'
       static_configs:
-        - targets: ['192.168.23.6:9100']
+        - targets: ['your_ip:9100']
   
     - job_name: 'nvidia_gpu_exporter'
       static_configs:
-        - targets: ['192.168.23.6:9835']
+        - targets: ['your_ip:9835']
   ```
 
   Make sure to replace the placeholder IP addresses and ports with the actual values used in your environment.
@@ -110,8 +110,8 @@ Prometheus stores all scraped metrics as time-series data, indexed by metric nam
 
   By default, the nvidia_node_exporter and node_exporter should work out of the box for most setups. However, if there are any specific configurations or flags you'd like to set, refer to the official documentation.
 
-* Place the above three extracted files into the `power_test_v1.0` folder.
-* Copy all the files in the ``power_test_v1.0`` folder into the folder of your target program
+* Place the above three extracted files into the `AI_Co2_Calculator` folder.
+* Copy all the files in the ``AI_Co2_Calculator`` folder into the folder of your target program
 * 
 
 ### **Running the Program**
