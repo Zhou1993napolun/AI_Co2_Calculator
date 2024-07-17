@@ -34,8 +34,8 @@ AI_Co2_Calculator is an innovative tool designed to monitor and calculate carbon
   - Pull-based Model: Scrapes metrics from instrumented jobs, either directly or via an intermediary push gateway.
 
 
+[NVIDIA DCGM](https://developer.nvidia.com/dcgm)(nvidia_gpu_exporter, Node Exporter)
 
-[NVIDIA DCGM ]（nvidia_gpu_exporter, Node Exporter）
 NVIDIA Data Center GPU Manager (DCGM) is a suite of tools for managing and monitoring NVIDIA datacenter GPUs in cluster environments. It includes active health monitoring, comprehensive diagnostics, system alerts and governance policies including power and clock management. It can be used standalone by infrastructure teams and easily integrates into cluster management tools, resource scheduling and monitoring products from NVIDIA partners.
 
 
@@ -346,4 +346,7 @@ if __name__ == "__main__":
 
     calculate_energy(start_time, end_time)
 ```
+
+### Conclusion
+AI_Co2_Calculator is a powerful tool designed to monitor and reduce carbon emissions during deep learning training. By providing precise calculations based on local carbon intensity, it helps optimize energy use. The tool seamlessly integrates data from various hardware components using Prometheus and NVIDIA exporter on x86 systems and jtop on ARM systems. This comprehensive monitoring aids in reducing the environmental impact of deep learning models. Embracing AI_Co2_Calculator is a proactive step towards sustainability, aligning technological advancements with the need to reduce carbon emissions and build a greener future.
 
