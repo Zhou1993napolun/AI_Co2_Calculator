@@ -1,6 +1,5 @@
 # README
 
-
 ### **Introduction**
 
   In the current global context, where environmental protection is becoming increasingly critical, we present AI_Co2_Calculator—an innovative tool designed to measure the carbon emissions generated during deep learning training processes. Monitoring and reducing carbon emissions has become a shared responsibility for individuals and organizations alike, and AI_Co2_Calculator aims to facilitate this effort.
@@ -9,26 +8,34 @@ One of the key features of AI_Co2_Calculator is its ability to accurately calcul
 As the world increasingly emphasizes the importance of sustainability, tools like AI_Co2_Calculator play a vital role in advancing environmental responsibility within the tech industry. By helping users optimize their energy use and reduce their carbon footprint, AI_Co2_Calculator contributes to the broader goal of building a greener and more sustainable future. Embracing AI_Co2_Calculator means taking a proactive step towards environmental stewardship, aligning technological advancements with the imperative of reducing carbon emissions for the benefit of our planet.
 
 
+* **AI_Co2_Calculator Overview ?**
 
-* **What is AI_Co2_Calculator for ?**
+  AI_Co2_Calculator is designed to detect the utilization rates of CPU, GPU, and RAM, and then calculate the energy consumption of the device based on relevant formulas. This functionality is essential for accurately assessing the energy usage and carbon emissions of deep learning models. Different tools are required to detect different information.
 
-  AI_Co2_Calculator is designed to detect the utilization rates of CPU, GPU, and RAM, and then calculate the energy consumption of the device based on relevant formulas. This functionality is essential for accurately assessing the energy usage and carbon emissions of deep learning models. Different tools are required to detect different information—while Prometheus can read CPU and RAM utilization, it cannot directly read GPU utilization.
-To bridge this gap, AI_Co2_Calculator integrates specialized GPU monitoring tools such as NVIDIA exporter and Node exporter. This allows users to obtain comprehensive utilization data across all major hardware components. By combining these metrics, AI_Co2_Calculator can provide a holistic view of energy consumption, helping users to optimize their models and reduce their environmental impact.
+On x86 systems, we use Prometheus to read CPU and RAM utilization, and NVIDIA exporter and Node exporter to monitor GPU usage. 
+For ARM systems, we leverage built-in Linux tools like jtop to monitor CPU, GPU, and RAM utilization.
+
+This comprehensive data collection allows users to obtain an integrated view of the utilization of all major hardware components. By combining these metrics, AI_Co2_Calculator provides a holistic view of energy consumption, helping users to optimize their models and reduce their environmental impact.
 
 
-* **What is Prometheus**
+**How to Use AI_Co2_Calculator on Different Systems**
 
+**To effectively use AI_Co2_Calculator on x86 systems**
+AI_Co2_Calculator is an innovative tool designed to monitor and calculate carbon emissions during deep learning training processes. Here's a detailed guide on how to effectively use AI_Co2_Calculator on x86 systems, including the necessary tools and configuration steps.
+
+Tool Overview
+**Prometheus**
   [Prometheus](https://prometheus.io/) is an open-source monitoring and alerting toolkit that focuses on reliability and scalability. Originally built by SoundCloud in 2012, Prometheus has since become a project under the Cloud Native Computing Foundation (CNCF). Key features include:
+  
+Multi-dimensional Data Model: Uses key-value pairs called labels for detailed data representation, enabling precise querying and aggregation of metrics.
+PromQL: A powerful query language for real-time querying and analysis of time-series data.
+Time-Series Data Storage: Efficiently stores and retrieves large volumes of metrics data, ideal for monitoring large-scale environments.
 
-Key features include:
-Multi-dimensional Data Model:
-Prometheus uses a flexible data model based on key-value pairs called labels, which allows for highly granular and detailed data representation. This enables users to precisely query and aggregate metrics across various dimensions, such as instances, jobs, and environments.
 
-PromQL (Prometheus Query Language):
-Prometheus includes a powerful query language called PromQL, which allows users to perform complex queries on time-series data. With PromQL, users can aggregate, filter, and transform metrics in real-time, facilitating detailed analysis and visualization of system performance.
+**NVIDIA DCGM （nvidia_gpu_exporter, Node Exporter）**
+[NVIDIA DCGM] https://developer.nvidia.com/dcgm  
+NVIDIA Data Center GPU Manager (DCGM) is a suite of tools for managing and monitoring NVIDIA datacenter GPUs in cluster environments. It includes active health monitoring, comprehensive diagnostics, system alerts and governance policies including power and clock management. It can be used standalone by infrastructure teams and easily integrates into cluster management tools, resource scheduling and monitoring products from NVIDIA partners.
 
-Time-Series Data Storage:
-Prometheus stores all scraped metrics as time-series data, indexed by metric name and a set of key-value pairs. This approach allows for efficient storage and retrieval of large volumes of metrics data, making it ideal for monitoring large-scale environments.
 
 
 ### **Environment Setup**
@@ -36,11 +43,10 @@ Prometheus stores all scraped metrics as time-series data, indexed by metric nam
 * **Install Prometheus**
 
   ``` sh
-  wget https://github.com/prometheus/prometheus/releases/download/v<VERSION>/promethe
-   us-<VERSION>.linux-amd64.tar.gz
+  wget wget https://github.com/prometheus/prometheus/releases/download/v2.53.1/prometheus-2.53.1.linux-amd64.tar.gz
   ```
 
-  After the download is complete, use the command to extract the file: ``tar xvzf prometheus-*.tar.gz``
+  After the download is complete, use the command to extract the file: ``tar -xvf prometheus-2.53.1.linux-amd64.tar.gz``
 
 * **Configuring Prometheus**
 
@@ -114,8 +120,40 @@ Prometheus stores all scraped metrics as time-series data, indexed by metric nam
 * Copy all the files in the ``AI_Co2_Calculator`` folder into the folder of your target program
 * 
 
-### **Running the Program**
 
+* **Install AI carbon footprint tools Python server start process**
+```
+#Install Python 3.8 or Higher
+
+#Install FastAPI and Unicorn
+
+python -m pip install fastapi 
+python -m pip install unicorn
+
+#Start the Service
+Open the command line terminal and navigate to the directory containing your main.py file. Start the service with the following command:
+python -m uvicorn main:app --reload
+```
+
+
+* **Install ResponseAIProject** *
+
+```
+First, make sure you have install the JDK8 above, and the nodejs (version above 18), npm(version above 8) command in your machine.
+
+1  go to responseAIProject-/serve-end/, and start the jar with: nohup  java -jar responseAIWeb-0.0.1-SNAPSHOT.jar >log.out &
+2  Go to the responseAIProject-\responseAIWeb, exec the commands:
+  1)  npm i serve -g
+  2)  npm i
+  3)  run command "npm run build"
+     
+ Afetr success build, there is "build" folder under responseAIWeb, go into "build" folder,
+  5) nohup serve -s  -l 3033 & (Remember, this command must be you are in "build" folder)
+  6) Then, access the page on any machine  , https://IP:3033
+```
+
+
+### **Running the Program**
 
 * **Start Nvidia GPU Exporter, Node Exporter, Prometheus, AI carbon footprint tools Python server, responseAIProject**
 
@@ -138,42 +176,22 @@ Prometheus stores all scraped metrics as time-series data, indexed by metric nam
   
   # Start Node exporter
   nohup ./node_exporter > node_exporter.log 2>&1 &
+
+  # Start AI carbon footprint tools Python server
+  nohup python -m uvicorn main:app --reload > uvicorn.log 2>&1 &
+
+  # Start responseAIProject
+  nohup  java -jar responseAIWeb-0.0.1-SNAPSHOT.jar >log.out &
+  nohup serve -s -l 3033 > serve.log 2>&1 &
+
+
+
+
+
+
+
   ```
   
-
-* **AI carbon footprint tools Python server start process**
-```
-#Install Python 3.8 or Higher
-
-#Install FastAPI and Unicorn
-
-python -m pip install fastapi 
-python -m pip install unicorn
-
-#Start the Service
-Open the command line terminal and navigate to the directory containing your main.py file. Start the service with the following command:
-python -m uvicorn main:app --reload
-```
-
-
-* **ResponseAIProject** *
-
-```
-First, make sure you have install the JDK8 above, and the nodejs (version above 18), npm(version above 8) command in your machine.
-
-1  git clone this folder to your machine
-2  After finish, copy the CVS file to responseAIProject-/serve-end/, and change the names to "training_data.csv" or "inference_data.csv"
-3  start the jar with: nohup  java -jar responseAIWeb-0.0.1-SNAPSHOT.jar >log.out &
-4  Go to the responseAIProject-\responseAIWeb, exec the commands:
-  1)  npm i serve -g
-  2)  npm i
-  3)  run command "npm run build"
-     
- Afetr success build, there is "build" folder under responseAIWeb, go into "build" folder,
-  5) nohup serve -s  -l 3033 & (Remember, this command must be you are in "build" folder)
-  6) Then, access the page on any machine  , https://IP:3033
-```
-
 
 * **Modify the main code of the power_test target program**
 
