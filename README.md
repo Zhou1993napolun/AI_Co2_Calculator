@@ -1,27 +1,27 @@
 # README
 
 ### **Introduction**
-
+  
   In the current global context, where environmental protection is becoming increasingly critical, we present AI_Co2_Calculator—an innovative tool designed to measure the carbon emissions generated during deep learning training processes. Monitoring and reducing carbon emissions has become a shared responsibility for individuals and organizations alike, and AI_Co2_Calculator aims to facilitate this effort.
-AI_Co2_Calculator offers a user-friendly interface that enables users to swiftly and efficiently start monitoring their carbon footprint. The tool provides intuitive and clear data visualizations, which facilitate a comprehensive understanding of carbon emissions. Its robust compatibility allows it to automatically detect the majority of CPU and GPU models available on the market, ensuring wide applicability and convenience.
-One of the key features of AI_Co2_Calculator is its ability to accurately calculate carbon emissions based on the varying carbon intensity of electricity in different countries. This precision is crucial for users aiming to optimize the energy efficiency of their deep learning training processes. By considering the specific carbon intensity of the user's location, AI_Co2_Calculator delivers tailored and precise emission calculations.
-As the world increasingly emphasizes the importance of sustainability, tools like AI_Co2_Calculator play a vital role in advancing environmental responsibility within the tech industry. By helping users optimize their energy use and reduce their carbon footprint, AI_Co2_Calculator contributes to the broader goal of building a greener and more sustainable future. Embracing AI_Co2_Calculator means taking a proactive step towards environmental stewardship, aligning technological advancements with the imperative of reducing carbon emissions for the benefit of our planet.
+  AI_Co2_Calculator offers a user-friendly interface that enables users to swiftly and efficiently start monitoring their carbon footprint. The tool provides intuitive and clear data visualizations, which facilitate a comprehensive understanding of carbon emissions. Its robust compatibility allows it to automatically detect the majority of CPU and GPU models available on the market, ensuring wide applicability and convenience.
+  One of the key features of AI_Co2_Calculator is its ability to accurately calculate carbon emissions based on the varying carbon intensity of electricity in different countries. This precision is crucial for users aiming to optimize the energy efficiency of their deep learning training processes. By considering the specific carbon intensity of the user's location, AI_Co2_Calculator delivers tailored and precise emission calculations.
+  As the world increasingly emphasizes the importance of sustainability, tools like AI_Co2_Calculator play a vital role in advancing environmental responsibility within the tech industry. By helping users optimize their energy use and reduce their carbon footprint, AI_Co2_Calculator contributes to the broader goal of building a greener and more sustainable future. Embracing AI_Co2_Calculator means taking a proactive step towards environmental stewardship, aligning technological advancements with the imperative of reducing carbon emissions for the benefit of our planet.
 
 
 * **AI_Co2_Calculator Overview ?**
 
   AI_Co2_Calculator is designed to detect the utilization rates of CPU, GPU, and RAM, and then calculate the energy consumption of the device based on relevant formulas. This functionality is essential for accurately assessing the energy usage and carbon emissions of deep learning models. Different tools are required to detect different information.
-
-On x86 systems, we use Prometheus to read CPU and RAM utilization, and NVIDIA exporter and Node exporter to monitor GPU usage. 
-For ARM systems, we leverage built-in Linux tools like jtop to monitor CPU, GPU, and RAM utilization.
-
-This comprehensive data collection allows users to obtain an integrated view of the utilization of all major hardware components. By combining these metrics, AI_Co2_Calculator provides a holistic view of energy consumption, helping users to optimize their models and reduce their environmental impact.
+  
+  On x86 systems, we use Prometheus to read CPU and RAM utilization, and NVIDIA exporter and Node exporter to monitor GPU usage. 
+  For ARM systems, we leverage built-in Linux tools like jtop to monitor CPU, GPU, and RAM utilization.
+  
+  This comprehensive data collection allows users to obtain an integrated view of the utilization of all major hardware components. By combining these metrics, AI_Co2_Calculator provides a holistic view of energy consumption, helping users to optimize their models and reduce their environmental impact.
 
 
 **How to Use AI_Co2_Calculator on Different Systems**
 
 **To effectively use AI_Co2_Calculator on x86 systems**
-AI_Co2_Calculator is an innovative tool designed to monitor and calculate carbon emissions during deep learning training processes. Here's a detailed guide on how to effectively use AI_Co2_Calculator on x86 systems, including the necessary tools and configuration steps.
+  AI_Co2_Calculator is an innovative tool designed to monitor and calculate carbon emissions during deep learning training processes. Here's a detailed guide on how to effectively use   AI_Co2_Calculator on x86 systems, including the necessary tools and configuration steps.
 
 Tool Overview
 **Prometheus**
@@ -33,7 +33,7 @@ Time-Series Data Storage: Efficiently stores and retrieves large volumes of metr
 
 
 **NVIDIA DCGM （nvidia_gpu_exporter, Node Exporter）**
-[NVIDIA DCGM] https://developer.nvidia.com/dcgm  
+  [NVIDIA DCGM] https://developer.nvidia.com/dcgm  
 NVIDIA Data Center GPU Manager (DCGM) is a suite of tools for managing and monitoring NVIDIA datacenter GPUs in cluster environments. It includes active health monitoring, comprehensive diagnostics, system alerts and governance policies including power and clock management. It can be used standalone by infrastructure teams and easily integrates into cluster management tools, resource scheduling and monitoring products from NVIDIA partners.
 
 
@@ -178,18 +178,11 @@ First, make sure you have install the JDK8 above, and the nodejs (version above 
   nohup ./node_exporter > node_exporter.log 2>&1 &
 
   # Start AI carbon footprint tools Python server
-  nohup python -m uvicorn main:app --reload > uvicorn.log 2>&1 &
+  Open the command line terminal and navigate to the directory containing your main.py file.
+  Start the service with the following command: python -m uvicorn main:app --reload
 
   # Start responseAIProject
-  nohup  java -jar responseAIWeb-0.0.1-SNAPSHOT.jar >log.out &
-  nohup serve -s -l 3033 > serve.log 2>&1 &
-
-
-
-
-
-
-
+  nohup serve -s  -l 3033 & (Remember, this command must be you are in "build" folder)
   ```
   
 
