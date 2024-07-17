@@ -35,7 +35,7 @@ AI_Co2_Calculator is an innovative tool designed to monitor and calculate carbon
 
 
 
-NVIDIA DCGM （nvidia_gpu_exporter, Node Exporter）
+[NVIDIA DCGM ]（nvidia_gpu_exporter, Node Exporter）
 NVIDIA Data Center GPU Manager (DCGM) is a suite of tools for managing and monitoring NVIDIA datacenter GPUs in cluster environments. It includes active health monitoring, comprehensive diagnostics, system alerts and governance policies including power and clock management. It can be used standalone by infrastructure teams and easily integrates into cluster management tools, resource scheduling and monitoring products from NVIDIA partners.
 
 
@@ -246,7 +246,7 @@ Key Features:
   -Optimized for Jetson platforms: Tailored specifically for NVIDIA Jetson devices.
 
 
-### **Environment Setup for X86**
+### **Environment Setup for ARM**
 * **Install Jtop**
 ```
 #Update package lists and install Python 3 and pip
