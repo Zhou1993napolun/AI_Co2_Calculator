@@ -26,24 +26,21 @@ AI_Co2_Calculator is an innovative tool designed to monitor and calculate carbon
 
 **Tool Overview**
 
-**[Prometheus]**(https://prometheus.io/) is an open-source monitoring and alerting toolkit that focuses on reliability and scalability. Originally built by SoundCloud in 2012, Prometheus has since become a project under the Cloud Native Computing Foundation (CNCF). 
+[Prometheus](https://prometheus.io/) is an open-source monitoring and alerting toolkit that focuses on reliability and scalability. Originally built by SoundCloud in 2012, Prometheus has since become a project under the Cloud Native Computing Foundation (CNCF). Key features include:
 
-Key features include:
-  
-Multi-dimensional Data Model: Uses key-value pairs called labels for detailed data representation, enabling precise querying and aggregation of metrics.
-
-PromQL: A powerful query language for real-time querying and analysis of time-series data.
-
-Time-Series Data Storage: Efficiently stores and retrieves large volumes of metrics data, ideal for monitoring large-scale environments.
+  - Multi-dimensional Data Model: Uses key-value pairs for data representation, enabling flexible and accurate querying.
+  - PromQL: A powerful query language that allows users to aggregate and select time series data in real time.
+  - Distributed and Decentralized: Each instance operates independently, but can also be part of a larger setup.
+  - Pull-based Model: Scrapes metrics from instrumented jobs, either directly or via an intermediary push gateway.
 
 
-**NVIDIA DCGM** （nvidia_gpu_exporter, Node Exporter）https://developer.nvidia.com/dcgm
 
+NVIDIA DCGM （nvidia_gpu_exporter, Node Exporter）
 NVIDIA Data Center GPU Manager (DCGM) is a suite of tools for managing and monitoring NVIDIA datacenter GPUs in cluster environments. It includes active health monitoring, comprehensive diagnostics, system alerts and governance policies including power and clock management. It can be used standalone by infrastructure teams and easily integrates into cluster management tools, resource scheduling and monitoring products from NVIDIA partners.
 
 
 
-### **Environment Setup**
+### **Environment Setup for X86**
 
 * **Install Prometheus**
 
@@ -157,7 +154,7 @@ First, make sure you have install the JDK8 above, and the nodejs (version above 
 ```
 
 
-### **Running the Program**
+### **Running the Program for x86**
 
 **Start Nvidia GPU Exporter, Node Exporter, Prometheus, AI carbon footprint tools Python server, responseAIProject**
 
@@ -212,7 +209,7 @@ First, make sure you have install the JDK8 above, and the nodejs (version above 
 
   Then, you can find the .csv file recording various information in the root directory of your target program
 
-### Example
+### Example for x86
 
 To help you better understand how it works, we provide an example using ``powertest.py``
 
@@ -234,6 +231,7 @@ if __name__ == "__main__":
 ```
 
 **To effectively use AI_Co2_Calculator on ARM systems**
+
 AI_Co2_Calculator is an innovative tool designed to monitor and calculate carbon emissions during deep learning training processes. Here's a detailed guide on how to effectively use AI_Co2_Calculator on ARM systems, including the necessary tools and configuration steps.
 
 
@@ -243,25 +241,21 @@ AI_Co2_Calculator is an innovative tool designed to monitor and calculate carbon
 Jtop : jtop is a monitoring tool specifically designed for NVIDIA Jetson platforms. It provides a real-time view of system metrics such as CPU, GPU, RAM, and thermal information. This tool is particularly useful for developers and engineers working with AI and deep learning applications on Jetson devices, allowing them to monitor resource utilization and system performance effectively.
 
 Key Features:
-
-Real-time monitoring: Provides up-to-date information on CPU, GPU, memory, and thermal status.
-
-User-friendly interface: Displays data in a clear and organized manner.
-
-Optimized for Jetson platforms: Tailored specifically for NVIDIA Jetson devices.
+  -Real-time monitoring: Provides up-to-date information on CPU, GPU, memory, and thermal status.
+  -User-friendly interface: Displays data in a clear and organized manner.
+  -Optimized for Jetson platforms: Tailored specifically for NVIDIA Jetson devices.
 
 * **Install Jtop**
 ```
 #Update package lists and install Python 3 and pip
-You can install them using the following commands:
-   sudo apt update
-   sudo apt install python3 python3-pip
+sudo apt update
+sudo apt install python3 python3-pip
 
 #Install jetson-stats:
-  sudo -H pip3 install jetson-stats
+sudo -H pip3 install jetson-stats
 
 #Run jtop:
- sudo jtop
+sudo jtop
 ```
 
 * **Install AI carbon footprint tools Python server start process**
@@ -296,18 +290,18 @@ First, make sure you have install the JDK8 above, and the nodejs (version above 
 ```
 
 
-### **Running the Program**
+### **Running the Program for ARM**
 * **Start Jtop, AI carbon footprint tools Python server, responseAIProject**
 ```
-#  Check if jtop is Already Installed:
- #jtop --version
+#Check if jtop is Already Installed:
+jtop --version
 
- # Start AI carbon footprint tools Python server
-  Open the command line terminal and navigate to the directory containing your main.py file.
-  Start the service with the following command: python -m uvicorn main:app --reload
+#Start AI carbon footprint tools Python server
+Open the command line terminal and navigate to the directory containing your main.py file.
+Start the service with the following command: python -m uvicorn main:app --reload
 
-  # Start responseAIProject
-  nohup serve -s  -l 3033 & (Remember, this command must be you are in "build" folder)
+#Start responseAIProject
+nohup serve -s  -l 3033 & (Remember, this command must be you are in "build" folder)
 ```
 
 * **Start the Target Program**
@@ -317,7 +311,7 @@ First, make sure you have install the JDK8 above, and the nodejs (version above 
   ```
   Then, you can find the .csv file recording various information in the root directory of your target program
 
-### Example
+### Example for ARM 
 
 To help you better understand how it works, we provide an example using ``AI_Co2_Calculator_arm.py``
 
