@@ -49,40 +49,29 @@ def get_system_stats():
                 # Extract GPU usage value
                 gpu_usage = stats.get('GPU', 0)
 
-
-                # 获取操作系统名称和版本号
+                # Get the operating system name and version number
                 os_name = platform.system()
                 os_version = platform.release()
 
-                # 获取计算机的网络名称
+                # Get the network name of the computer
                 node_name = platform.node()
 
-                # 获取计算机的处理器信息
+                # Get the computer's processor information
                 processor = platform.processor()
 
-                # 获取计算机的架构信息
+                # Get the computer's architecture information
                 machine = platform.machine()
 
-                # 获取计算机的平台信息
-                platform_name = platform.platform()
+                # Get the computer's platform information
+                platform_info = platform.platform()
 
-                # 获取计算机的完整信息
+                # Get the complete information of the computer
                 system_info = platform.uname()
-
-                print("\n\n")
-                print("Operating System Name:".ljust(30), os_name)
-                print("Operating System Version:".ljust(30), os_version)
-                print("Computer Network Name:".ljust(30), node_name)
-                print("Processor Information:".ljust(30), processor)
-                print("Architecture Information:".ljust(30), machine)
-                print("Platform Information:".ljust(30), platform_name)
-                print("Complete System Information:".ljust(30), system_info)
-                print("\n")
 
                 # 获取CPU型号
                 cpu_model = "Unknown"
                 try:
-                    cpu_info = subprocess.check_output("cat /proc/cpuinfo | grep 'model name' | head -n 1", shell=True)
+                    cpu_info = subprocess.check_output("lscpu | grep 'Model name'", shell=True)
                     cpu_model = cpu_info.decode().strip().split(":")[1].strip()
                 except subprocess.CalledProcessError:
                     print("Could not get CPU model.")
@@ -90,26 +79,34 @@ def get_system_stats():
                 # 获取GPU信息
                 gpu_model = "Unknown"
                 try:
-                    gpu_info = subprocess.check_output("sudo lshw -C display | grep 'product'", shell=True)
-                    gpu_model = gpu_info.decode().strip().split(":")[1].strip()
+                    gpu_info = subprocess.check_output("lspci | grep -i 'pci bridge' | head -n 1", shell=True)
+                    gpu_model = gpu_info.decode().strip().split("PCI bridge:")[1].strip()
                 except subprocess.CalledProcessError:
                     print("Could not find GPU information.")
 
-                print("CPU Model:", cpu_model)
-                print("GPU Model:", gpu_model)
+                # Print the obtained system information
+                print(f"Operating System Name: {os_name}")
+                print(f"Operating System Version: {os_version}")
+                print(f"Computer Network Name: {node_name}")
+                print(f"Processor Information: {processor}")
+                print(f"Architecture Information: {machine}")
+                print(f"Platform Information: {platform_info}")
+                print(f"Complete System Information: {system_info}")
+                print(f"CPU Model: {cpu_model}")
+                print(f"GPU Model: {gpu_model}")
 
-                # Write the data to CSV
-                with open('usage_data.csv', 'w', newline='') as csvfile:
+                # CSV file writing using csv module
+                with open('./co2signal_api/training_data.csv', 'w', newline='', encoding='utf-8') as csvfile:
                     writer = csv.writer(csvfile)
-                    writer.writerow(["Operating System Name", os_name])
-                    writer.writerow(["Operating System Version", os_version])
-                    writer.writerow(["Computer Network Name", node_name])
-                    writer.writerow(["Processor Information", processor])
-                    writer.writerow(["Architecture Information", machine])
-                    writer.writerow(["Platform Information", platform_name])
-                    writer.writerow(["Complete System Information", str(system_info)])
-                    writer.writerow(["CPU Model", cpu_model])
-                    writer.writerow(["GPU Model", gpu_model])
+                    writer.writerow(['Operating System Name', os_name, ''])
+                    writer.writerow(['Operating System Version', os_version, ''])
+                    writer.writerow(['Computer Network Name', node_name, ''])
+                    writer.writerow(['Processor Information', processor, ''])
+                    writer.writerow(['Architecture Information', machine, ''])
+                    writer.writerow(['Platform Information', platform_info, ''])
+                    writer.writerow(['Complete System Information', str(system_info), ''])
+                    writer.writerow(['CPU Model', cpu_model, ''])
+                    writer.writerow(['GPU Model', gpu_model, ''])
 
     except JtopException as e:
         print(f"An error occurred with jtop: {e}")
@@ -135,15 +132,19 @@ def log_usage_stats(jetson, file_path):
                 break
 
             stats = jetson.stats
+            cpu_usages = [stats[key] for key in stats.keys() if key.startswith('CPU')]
+            average_cpu_usage = sum(cpu_usages) / len(cpu_usages) if cpu_usages else 0
+
             row = {
                 'time': time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()),
-                'CPU_usage': (stats['CPU1'] + stats['CPU2'] + stats['CPU3'] + stats['CPU4'] + stats['CPU5'] + stats[
-                    'CPU6'] + stats['CPU7'] + stats['CPU8']) / 8,
-                'GPU_usage': stats['GPU'],
-                'RAM_usage': stats['RAM'],
+                'CPU_usage': average_cpu_usage,
+                'GPU_usage': stats.get('GPU', 0),  # 使用get方法并提供默认值0
+                'RAM_usage': stats.get('RAM', 0),  # 使用get方法并提供默认值0
             }
             writer.writerow(row)
             print(f"Logged data at {row['time']}")
+
+
 
 
 def fuzzy_search_power(model_type, model_name):
@@ -207,7 +208,6 @@ def fuzzy_search_power(model_type, model_name):
     return matched_power
 
 
-
 def calculate_energy(start_time, end_time):
     csv_file = './jtop_usage.csv'
 
@@ -222,10 +222,10 @@ def calculate_energy(start_time, end_time):
     gpu_mean = filtered_df['GPU_usage'].mean()
     ram_mean = filtered_df['RAM_usage'].mean()
 
-    cpu_info = subprocess.check_output("cat /proc/cpuinfo | grep 'model name' | head -n 1", shell=True)
+    cpu_info = subprocess.check_output("lscpu | grep 'Model name'", shell=True)
     cpu_model = cpu_info.decode().strip().split(":")[1].strip()
-    gpu_info = subprocess.check_output("lspci | grep 'controller'", shell=True)
-    gpu_model = gpu_info.decode().strip().split(":")[2].strip()
+    gpu_info = subprocess.check_output("lspci | grep -i 'pci bridge' | head -n 1", shell=True)
+    gpu_model = gpu_info.decode().strip().split("PCI bridge:")[1].strip()
 
     cpu_power = fuzzy_search_power('cpu', cpu_model)
     gpu_power = fuzzy_search_power('gpu', gpu_model)
@@ -245,22 +245,22 @@ def calculate_energy(start_time, end_time):
     print(f"After conversion：{energy / 1000} kWh")
     print(f"After conversion：{energy * 3600000} J")
     print(f"duration: {duration} s ")
-    print(f"datetime: {datetime.now()}")
+    print(f"datetime: {datetime.now().strftime('%m/%d/%Y %H:%M')}")
     print(f'Energy Comsumption: {energy / 1000} mJ, CPU_average_usage: {cpu_mean}%, , GPU_average_usage: {gpu_mean}%, RAM_average_usage: {ram_mean}%')
 
     # Now, let's write this combined data to a CSV file
-    with open('usage_data.csv', 'a', newline='') as csvfile:
+    with open('./co2signal_api/training_data.csv', 'a', newline='', encoding='utf-8') as csvfile:
         writer = csv.writer(csvfile)
         # Write headers and CPU usages
-        writer.writerow(["Instance", "Resource Type", "Average Usage (%)"])
-        writer.writerow(['node', "CPU", cpu_mean])
-        writer.writerow(['node', "RAM", ram_mean])
-        writer.writerow(['node', "GPU", gpu_mean])
-        writer.writerow(["Estimated power consumption by CPU+GPU Wh", f"{energy}Wh"])
-        writer.writerow(["After conversion ", f"{energy * 3600000} J"])
-        writer.writerow(["After conversion ", f"{energy / 1000} kWh"])
-        writer.writerow(["duration:", str(duration) + "s"])
-        writer.writerow(["datetime:", str(datetime.now())])
+        writer.writerow(["Instance", "Resource Type", "Average Usage (%)", ''])
+        writer.writerow(["node", "CPU", cpu_mean, ''])
+        writer.writerow(["node", "RAM", ram_mean, ''])
+        writer.writerow(["node", "GPU", gpu_mean, ''])
+        writer.writerow(["Estimated power consumption by CPU+GPU Wh", float(f"{energy:.6f}"), ''])
+        writer.writerow(["After conversion kWh", float(f"{energy / 1000:.6f}"), ''])
+        writer.writerow(["After conversion J", float(f"{energy * 3600000:.6f}"), ''])
+        writer.writerow(["duration", str(duration), ''])
+        writer.writerow(["datetime", datetime.now().strftime('%m/%d/%Y %H:%M'), ''])
     return energy
 
 
