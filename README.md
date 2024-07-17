@@ -230,3 +230,115 @@ if __name__ == "__main__":
     test_mesure(start,end)
 ```
 
+
+**To effectively use AI_Co2_Calculator on ARM systems**
+
+  AI_Co2_Calculator is an innovative tool designed to monitor and calculate carbon emissions during deep learning training processes. Here's a detailed guide on how to effectively use   AI_Co2_Calculator on ARM systems, including the necessary tools and configuration steps.
+
+
+Tool Overview
+**What is jtop?**
+jtop is a monitoring tool specifically designed for NVIDIA Jetson platforms. It provides a real-time view of system metrics such as CPU, GPU, RAM, and thermal information. This tool is particularly useful for developers and engineers working with AI and deep learning applications on Jetson devices, allowing them to monitor resource utilization and system performance effectively.
+
+Key Features:
+Real-time monitoring: Provides up-to-date information on CPU, GPU, memory, and thermal status.
+User-friendly interface: Displays data in a clear and organized manner.
+Optimized for Jetson platforms: Tailored specifically for NVIDIA Jetson devices.
+
+Installation on Linux: 
+Before installing jtop, ensure that you have Python 3 and pip (Python package installer) installed on your system. You can install them using the following commands:
+```sudo apt update
+   sudo apt install python3 python3-pip ```
+
+Install jetson-stats:
+```sudo -H pip3 install jetson-stats```
+
+Run jtop:
+```sudo jtop```
+
+
+* **Install AI carbon footprint tools Python server start process**
+```
+#Install Python 3.8 or Higher
+
+#Install FastAPI and Unicorn
+
+python -m pip install fastapi 
+python -m pip install unicorn
+
+#Start the Service
+Open the command line terminal and navigate to the directory containing your main.py file. Start the service with the following command:
+python -m uvicorn main:app --reload
+```
+
+* **Install ResponseAIProject** *
+
+```
+First, make sure you have install the JDK8 above, and the nodejs (version above 18), npm(version above 8) command in your machine.
+
+1  go to responseAIProject-/serve-end/, and start the jar with: nohup  java -jar responseAIWeb-0.0.1-SNAPSHOT.jar >log.out &
+2  Go to the responseAIProject-\responseAIWeb, exec the commands:
+  1)  npm i serve -g
+  2)  npm i
+  3)  run command "npm run build"
+     
+ Afetr success build, there is "build" folder under responseAIWeb, go into "build" folder,
+  5) nohup serve -s  -l 3033 & (Remember, this command must be you are in "build" folder)
+  6) Then, access the page on any machine  , https://IP:3033
+```
+
+### **Running the Program**
+* **Start Jtop, AI carbon footprint tools Python server, responseAIProject**
+
+#  Check if jtop is Already Installed:
+ #jtop --version
+
+ # Start AI carbon footprint tools Python server
+  Open the command line terminal and navigate to the directory containing your main.py file.
+  Start the service with the following command: python -m uvicorn main:app --reload
+
+  # Start responseAIProject
+  nohup serve -s  -l 3033 & (Remember, this command must be you are in "build" folder)
+  ```
+
+* **Start the Target Program**
+
+  ```sh
+  python3 name_of_your_code.py
+  ```
+  Then, you can find the .csv file recording various information in the root directory of your target program
+
+### Example
+
+To help you better understand how it works, we provide an example using ``AI_Co2_Calculator_arm.py``
+
+```python
+
+import time
+from AI_Co2_Calculator_arm import *
+
+
+def main(file_path='./jtop_usage.csv'):
+    start_total_time = time.time()
+    try:
+        with jtop() as jetson:
+            log_usage_stats(jetson, file_path)
+    except JtopException as e:
+        print(f"An error occurred with jtop: {e}")
+    except KeyboardInterrupt:
+        print("Closed with CTRL-C")
+    except IOError:
+        print("I/O error")
+    end_total_time = time.time()
+    total_duration = end_total_time - start_total_time
+    print(f"Total script duration: {total_duration} seconds")
+
+if __name__ == "__main__":
+    main()
+
+    end_time = int(time.time())
+    start_time = end_time - 60
+
+    calculate_energy(start_time, end_time)
+```
+
