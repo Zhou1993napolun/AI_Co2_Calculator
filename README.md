@@ -245,6 +245,8 @@ Key Features:
   -User-friendly interface: Displays data in a clear and organized manner.
   -Optimized for Jetson platforms: Tailored specifically for NVIDIA Jetson devices.
 
+
+### **Environment Setup for X86**
 * **Install Jtop**
 ```
 #Update package lists and install Python 3 and pip
