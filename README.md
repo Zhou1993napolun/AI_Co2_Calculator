@@ -228,14 +228,12 @@ if __name__ == "__main__":
     test_mesure(start,end)
 ```
 
-
-* **To effectively use AI_Co2_Calculator on ARM systems**
-
-  AI_Co2_Calculator is an innovative tool designed to monitor and calculate carbon emissions during deep learning training processes. Here's a detailed guide on how to effectively use   AI_Co2_Calculator on ARM systems, including the necessary tools and configuration steps.
+**To effectively use AI_Co2_Calculator on ARM systems**
+AI_Co2_Calculator is an innovative tool designed to monitor and calculate carbon emissions during deep learning training processes. Here's a detailed guide on how to effectively use AI_Co2_Calculator on ARM systems, including the necessary tools and configuration steps.
 
 
 **Tool Overview**
-**What is jtop?**
+Jtop : 
 jtop is a monitoring tool specifically designed for NVIDIA Jetson platforms. It provides a real-time view of system metrics such as CPU, GPU, RAM, and thermal information. This tool is particularly useful for developers and engineers working with AI and deep learning applications on Jetson devices, allowing them to monitor resource utilization and system performance effectively.
 
 Key Features:
@@ -245,19 +243,18 @@ User-friendly interface: Displays data in a clear and organized manner.
 
 Optimized for Jetson platforms: Tailored specifically for NVIDIA Jetson devices.
 
-Installation on Linux: 
-Before installing jtop, ensure that you have Python 3 and pip (Python package installer) installed on your system. 
-
+* **Install Jtop**
+```
 #Update package lists and install Python 3 and pip
 You can install them using the following commands:
    sudo apt update
-   ```sudo apt install python3 python3-pip``` 
+   sudo apt install python3 python3-pip``` 
 
 #Install jetson-stats:
-  ```sudo -H pip3 install jetson-stats```
+  sudo -H pip3 install jetson-stats```
 
 #Run jtop:
- ```sudo jtop```
+ sudo jtop```
 
 
 * **Install AI carbon footprint tools Python server start process**
@@ -271,10 +268,11 @@ python -m pip install unicorn
 
 #Start the Service
 Open the command line terminal and navigate to the directory containing your main.py file. Start the service with the following command:
-```python -m uvicorn main:app --reload```
+python -m uvicorn main:app --reload
+```
 
 
-* **Install ResponseAIProject** *
+* **Install ResponseAIProject** 
 
 ```
 First, make sure you have install the JDK8 above, and the nodejs (version above 18), npm(version above 8) command in your machine.
@@ -289,6 +287,7 @@ First, make sure you have install the JDK8 above, and the nodejs (version above 
   5) nohup serve -s  -l 3033 & (Remember, this command must be you are in "build" folder)
   6) Then, access the page on any machine  , https://IP:3033
 ```
+
 
 ### **Running the Program**
 * **Start Jtop, AI carbon footprint tools Python server, responseAIProject**
