@@ -347,7 +347,7 @@ def query_total_energy(prometheus_server_address, start_time, end_time):
         duration = end_time - start_time
         print(f"duration: {duration} s ")
         print(f"datetime: {datetime.now().strftime('%m/%d/%Y %H:%M')}")
-        print(f'Architecture Comsumption: {(ans / 1000) * (duration / 157680000) * 0.5} gCO2e')  # The following numbers are not reliable values and are only used for testing purposes.
+        print(f'Manifacture Comsumption: {(ans / 1000) * (duration / 157680000) * 0.5} gCO2e')  # The following numbers are not reliable values and are only used for testing purposes.
         print("\n\n")
     else:
         print("The query failed or an empty dictionary was returned.")
@@ -371,7 +371,7 @@ def query_total_energy(prometheus_server_address, start_time, end_time):
         writer.writerow(["After conversion J", float(f"{ans * 3600000:.6f}"), ''])
         writer.writerow(["duration", str(duration), ''])  
         writer.writerow(["datetime", datetime.now().strftime('%m/%d/%Y %H:%M'), ''])
-        writer.writerow(["Architecture Comsumption", f"{(ans / 1000) * (duration / 157680000) * 0.5} gCO2e"])
+        writer.writerow(["Manifacture Comsumption", f"{(ans / 1000) * (duration / 157680000) * 0.5} gCO2e"])
 
 
 def test_mesure(start, end):

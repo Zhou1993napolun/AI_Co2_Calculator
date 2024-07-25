@@ -247,7 +247,7 @@ def calculate_energy(start_time, end_time):
     print(f"duration: {duration} s ")
     print(f"datetime: {datetime.now()}")
     print(f'Energy Comsumption: {energy / 1000} mJ, CPU_average_usage: {cpu_mean}%, , GPU_average_usage: {gpu_mean}%, RAM_average_usage: {ram_mean}%')
-    print(f'Architecture Comsumption: {(energy/1000)*(duration/157680000)*0.5} mJ')   # The following numbers are not reliable values and are only used for testing purposes.
+    print(f'Manifacture Comsumption: {(energy/1000)*(duration/157680000)*0.5} gCO2e')   # The following numbers are not reliable values and are only used for testing purposes.
 
 
     # Now, let's write this combined data to a CSV file
@@ -263,7 +263,7 @@ def calculate_energy(start_time, end_time):
         writer.writerow(["After conversion ", f"{energy / 1000} kWh"])
         writer.writerow(["duration:", str(duration) + "s"])
         writer.writerow(["datetime:", str(datetime.now())])
-        writer.writerow(["Architecture Comsumption",f"{(energy / 1000) * (duration / 157680000) * 0.5} gCO2e"])
+        writer.writerow(["Manifacture Comsumption",f"{(energy / 1000) * (duration / 157680000) * 0.5} gCO2e"])
     return energy
 
 
