@@ -20,6 +20,17 @@
 
 ###**How to Use AI_Co2_Calculator on Different Systems**
 
+
+
+![PIC](https://github.com/user-attachments/assets/671d4335-581b-4094-b263-2c7252a83917)
+
+
+
+
+
+
+
+
 **To effectively use AI_Co2_Calculator on x86 systems**
 
 AI_Co2_Calculator is an innovative tool designed to monitor and calculate carbon emissions during deep learning training processes. Here's a detailed guide on how to effectively use AI_Co2_Calculator on x86 systems, including the necessary tools and configuration steps.
