@@ -20,7 +20,7 @@
 
 ###**How to Use AI_Co2_Calculator on Different Systems**
 
-###**Global architecture diagram**
+### **Global architecture diagram**
 
 ![PIC](https://github.com/user-attachments/assets/671d4335-581b-4094-b263-2c7252a83917)
 
